@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 400" role="img" aria-label="Cask and Barrel Yarm — 137 High Street">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#1e1510"/>
+      <stop offset="55%" stop-color="#2c1d14"/>
+      <stop offset="100%" stop-color="#140d09"/>
+    </linearGradient>
+    <linearGradient id="brass" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#ebd08e"/>
+      <stop offset="50%" stop-color="#c89d46"/>
+      <stop offset="100%" stop-color="#8f6a22"/>
+    </linearGradient>
+  </defs>
+  <rect width="640" height="400" fill="url(#bg)"/>
+  <rect x="22" y="22" width="596" height="356" rx="14" fill="none" stroke="url(#brass)" stroke-width="2" opacity="0.65"/>
+  <rect x="30" y="30" width="580" height="340" rx="10" fill="none" stroke="url(#brass)" stroke-width="1" stroke-dasharray="5 5" opacity="0.4"/>
+  <!-- Stylized Oak Cask -->
+  <g transform="translate(320, 148)" fill="none" stroke="url(#brass)" stroke-width="2.5">
+    <ellipse cx="0" cy="0" rx="46" ry="58" fill="#26180f"/>
+    <path d="M-38,-32 Q0,-40 38,-32 M-45,-10 Q0,-16 45,-10 M-45,14 Q0,20 45,14 M-38,34 Q0,42 38,34" stroke-width="2"/>
+    <path d="M-16,-56 Q-24,0 -16,56 M16,-56 Q24,0 16,56 M0,-58 L0,58" stroke-width="1.4" opacity="0.65"/>
+    <circle cx="0" cy="2" r="5.5" fill="url(#brass)"/>
+  </g>
+  <text x="320" y="246" text-anchor="middle" fill="#f6ead3" font-family="Georgia, serif" font-size="30" font-weight="700" letter-spacing="2">CASK &amp; BARREL</text>
+  <text x="320" y="276" text-anchor="middle" fill="#d9b468" font-family="system-ui, sans-serif" font-size="13" font-weight="600" letter-spacing="3.5">137 HIGH STREET · YARM · REAL ALE PUB</text>
+  <text x="320" y="316" text-anchor="middle" fill="#a8947b" font-family="monospace" font-size="12" letter-spacing="1.5">3 STANDALONE REPOS · SET A · SET B · SET C</text>
+</svg>

@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en-GB" data-theme="light">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="robots" content="noindex, nofollow">
+  <title>Yarm &amp; Eaglescliffe — Concept Websites Studio Dashboard</title>
+  <meta name="description" content="Private walk-in pitch and portfolio command centre for Mark Aszkenasy (tedotedo) — 9 Yarm &amp; Eaglescliffe local businesses, 27 mobile-first concept websites.">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+  <header class="topbar">
+    <div class="container topbar-inner">
+      <div class="brand-group">
+        <div class="brand-mark" aria-hidden="true">YE</div>
+        <div class="brand-copy">
+          <span class="brand-eyebrow">Mark Aszkenasy · tedotedo · Field Command</span>
+          <h1 class="brand-title">Yarm &amp; Eaglescliffe Concept Studio</h1>
+        </div>
+      </div>
+
+      <div class="topbar-actions">
+        <button type="button" id="openCompareBtn" class="btn-top btn-top--primary">⇄ Compare A·B·C</button>
+        <button type="button" id="exportSummaryBtn" class="btn-top" title="Copy Markdown pitch tracker summary">⧉ Copy Tracker</button>
+        <button type="button" id="themeToggleBtn" class="btn-top" aria-label="Toggle daylight or dark studio theme">☾ Dark Studio</button>
+      </div>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="kpi-strip" aria-label="Portfolio and outreach metrics">
+      <div class="kpi-grid">
+        <div class="kpi-card">
+          <span class="kpi-label">Businesses</span>
+          <div class="kpi-value">9 <span class="kpi-sub">8 new + Cask</span></div>
+        </div>
+        <div class="kpi-card">
+          <span class="kpi-label">Live Websites</span>
+          <div class="kpi-value">27 <span class="kpi-sub">Sets A · B · C</span></div>
+        </div>
+        <div class="kpi-card">
+          <span class="kpi-label">Pitched / Sent</span>
+          <div class="kpi-value" id="kpiPitched">0 / 9</div>
+        </div>
+        <div class="kpi-card">
+          <span class="kpi-label">Follow-Ups</span>
+          <div class="kpi-value" id="kpiFollowup">0</div>
+        </div>
+        <div class="kpi-card kpi-card--wide">
+          <span class="kpi-label">Clients Won</span>
+          <div class="kpi-value" id="kpiWon">0</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="controls-section" aria-label="Filter businesses by walking route or status">
+      <div class="controls-bar">
+        <div class="route-pills" role="tablist" aria-label="Walk-in route clusters">
+          <button type="button" class="route-pill is-active" data-route="all">All (9 · 27 Sites)</button>
+          <button type="button" class="route-pill" data-route="danby">Danby Wynd Pair (2)</button>
+          <button type="button" class="route-pill" data-route="highst">Yarm High St Stroll (4)</button>
+          <button type="button" class="route-pill" data-route="eaglescliffe">Eaglescliffe Stn (1)</button>
+          <button type="button" class="route-pill" data-route="outreach">Phone Outreach (2)</button>
+        </div>
+
+        <div class="search-filter-row">
+          <div class="search-wrap">
+            <span class="search-icon" aria-hidden="true">⌕</span>
+            <input type="search" id="searchInput" class="search-input" placeholder="Search shop, street, domain… (/)" aria-label="Search businesses">
+          </div>
+          <select id="statusFilter" class="status-filter" aria-label="Filter by outreach status">
+            <option value="all">All Statuses</option>
+            <option value="todo">○ To Pitch</option>
+            <option value="visited">● Visited / Sent</option>
+            <option value="followup">◐ Follow Up</option>
+            <option value="won">★ Won Client</option>
+          </select>
+        </div>
+      </div>
+    </section>
+
+    <aside class="route-banner" aria-live="polite">
+      <div>
+        <strong id="routeBannerTitle">Master Field Command · 9 Local Businesses · 27 Mobile-First Websites</strong>
+        <div id="routeBannerBody">Before stepping inside any shop: open Tab 1 showing their broken/missing web listing, and Tab 2 with Set A, B, or C ready above the fold.</div>
+      </div>
+      <div class="route-banner-links">
+        <a class="mini-link" href="https://github.com/tedotedo?tab=repositories" target="_blank" rel="noopener">GitHub @tedotedo ↗</a>
+      </div>
+    </aside>
+
+    <section id="cardsGrid" class="cards-grid" aria-label="Website concepts directory"></section>
+
+    <div id="emptyState" class="empty-state" hidden>
+      <p><strong>No businesses match that filter.</strong></p>
+      <button type="button" id="resetFiltersBtn" class="btn-top">Reset Filters</button>
+    </div>
+
+    <footer class="dash-footer">
+      <span>Private Studio Command Deck · <code>noindex, nofollow</code> · Outreach notes save locally on this device.</span>
+      <span>Sets: <strong>A</strong> = Tactile Editorial · <strong>B</strong> = Bold Kinetic · <strong>C</strong> = Single-Page Stepper</span>
+    </footer>
+  </main>
+
+  <!-- Live Device & 3-Up Concept Inspector Modal -->
+  <dialog id="inspectorDialog" class="inspector-dialog" aria-label="Live Website Concept Inspector">
+    <div class="inspector-shell">
+      <div class="inspector-header">
+        <div class="inspector-biz-nav">
+          <button type="button" id="inspectorPrevBtn" class="chip-btn" aria-label="Previous business">←</button>
+          <select id="inspectorBizSelect" class="inspector-select" aria-label="Select business to preview"></select>
+          <button type="button" id="inspectorNextBtn" class="chip-btn" aria-label="Next business">→</button>
+        </div>
+
+        <div class="inspector-controls">
+          <div class="seg-group" role="group" aria-label="Comparison layout mode">
+            <button type="button" class="seg-btn is-active" data-ins-mode="single">Single Device</button>
+            <button type="button" class="seg-btn" data-ins-mode="triple">Compare A · B · C</button>
+          </div>
+
+          <div id="singleControlsGroup" class="inspector-controls">
+            <div class="seg-group" role="group" aria-label="Concept variant">
+              <button type="button" class="seg-btn is-active" data-ins-var="A">Set A</button>
+              <button type="button" class="seg-btn" data-ins-var="B">Set B</button>
+              <button type="button" class="seg-btn" data-ins-var="C">Set C</button>
+            </div>
+
+            <div class="seg-group" role="group" aria-label="Device viewport width">
+              <button type="button" class="seg-btn is-active" data-ins-width="390px">iPhone</button>
+              <button type="button" class="seg-btn" data-ins-width="360px">Android</button>
+              <button type="button" class="seg-btn" data-ins-width="820px">iPad</button>
+              <button type="button" class="seg-btn" data-ins-width="100%">Desktop</button>
+            </div>
+          </div>
+
+          <a id="inspectorOpenTab" class="chip-btn" href="#" target="_blank" rel="noopener">Open Tab ↗</a>
+          <button type="button" id="inspectorCloseBtn" class="btn-top">✕ Close</button>
+        </div>
+      </div>
+
+      <div id="inspectorStage" class="inspector-stage"></div>
+    </div>
+  </dialog>
+
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+
+  <script src="js/app.js"></script>
+</body>
+</html>
